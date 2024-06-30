@@ -7,27 +7,25 @@ import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
-  private url = 'http://localhost:3000/api/users/all'; 
+export class MyInfoService {
+  private url = 'http://localhost:3000/api/users';
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
-  getAllUsers(): Observable<User[]> {
+  getUserInfo(): Observable<User> {
+    const userId = this.authService.user?.id;
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.authService.user?.token}`,
     });
-    return this.http.get<User[]>(this.url, { headers });
+    console.log('Fetching user info for ID:', userId);
+    return this.http.get<User>(`${this.url}/my-info/${userId}`, { headers });
   }
 
-  getUserById(userId: string): Observable<User> {
+  updateUserInfo(userData: any): Observable<User> {
+    const userId = this.authService.user?.id;
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.authService.user?.token}`,
     });
-    return this.http.get<User>(this.url, { headers });
+    return this.http.patch<User>(`${this.url}/update/${userId}`, userData, { headers });
   }
-
-  updateUser(userId: string, userData: any): Observable<User> {
-    return this.http.patch<User>(`${this.url}/${userId}`, userData);
-  }
-
 }

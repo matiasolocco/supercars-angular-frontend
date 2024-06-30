@@ -7,12 +7,13 @@ import { isNotLoggedInGuard } from './guards/is-not-logged-in.guard';
 import { MeComponent } from './pages/me/me.component';
 import { isLoggedInGuard } from './guards/is-logged-in.guard';
 import { MyBookingsComponent } from './pages/me/my-bookings/my-bookings.component';
-import { MyInfoComponent } from './pages/me/my-info/my-info.component';
+
 import { AdminComponent } from './pages/admin/admin.component';
 import { BookingsComponent } from './pages/admin/bookings/bookings.component';
 
 import { UsersComponent } from './pages/admin/users/users.component';
 import { VehiclesComponent } from './pages/admin/vehicles/vehicles.component';
+import { MyInfoComponent } from './pages/me/my-info/my-info.component';
 
 export const routes: Routes = [
     {
