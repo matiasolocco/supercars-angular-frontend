@@ -67,8 +67,10 @@ export class BookingsComponent {
   }
 
   editar(bookingId: string) {
+    console.log('Editar reserva:', bookingId)
     const reservaEditar: Booking | undefined = this.bookings.find(x => x._id === bookingId);
     if (reservaEditar) {
+      console.log('Editar reserva:', reservaEditar)
       Swal.fire({
         title: `Editar reserva del ${reservaEditar.vehicle.brand} ${reservaEditar.vehicle.model}`,
         html: `<div>
@@ -101,7 +103,6 @@ export class BookingsComponent {
                 showConfirmButton: false,
                 timer: 2000
               });
-              // Actualizar la reserva localmente si es necesario
               reservaEditar.startDate = startDate;
               reservaEditar.endDate = endDate;
             },

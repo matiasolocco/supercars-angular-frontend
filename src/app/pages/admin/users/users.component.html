@@ -1,33 +1,39 @@
 @if (users.length === 0) {
-    <div class="alert alert-warning">
-      <i class="fa fa-circle-info"></i>
-      No hay usuarios registrados todavía
-    </div>
-  } @else {
-    <div>
-      <h2>Listado de Usuarios</h2>
-      <table class="table">
-        <thead>
+  <div class="alert alert-warning">
+    <i class="fa fa-circle-info"></i>
+    No hay usuarios registrados todavía
+  </div>
+} @else {
+  <div>
+    <h2>Listado de Usuarios</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">ID</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Email</th>
+          <th scope="col">Rol</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (user of users; track user) {
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Email</th>
-            <th scope="col">Rol</th>
+            <td>
+              <button (click)="eliminar(user.id)" class="btn btn-danger btn-sm me-1">
+                <i class="fa fa-trash"></i>
+              </button>
+              <button (click)="editar(user.id)" class="btn btn-primary btn-sm">
+                <i class="fa fa-pencil"></i>
+              </button>
+            </td>
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
           </tr>
-        </thead>
-        <tbody>
-          @for (user of users; track user) {
-           
-            <tr>
-              <td>{{ user.id }}</td>
-              <td>{{ user.name }}</td>
-              <td>{{ user.email }}</td>
-              <td>{{ user.role }}</td>
-            </tr>
-          }
-        </tbody>
-      </table>
-  
-    </div>
-  }
-  
+        }
+      </tbody>
+    </table>
+  </div>
+}
