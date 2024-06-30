@@ -32,7 +32,7 @@ export class UsersComponent implements OnInit {
   }
 
   eliminar(userId: string) {
-    console.log('Eliminar usuario con ID:', userId); // Log de depuración
+    console.log('Eliminar usuario:', userId);
     Swal.fire({
       title: '¿Estás seguro?',
       text: 'No podrás revertir esta acción',
@@ -53,7 +53,7 @@ export class UsersComponent implements OnInit {
               timer: 2000
             });
 
-            this.users = this.users.filter(user => user.id !== userId); // Usar _id en lugar de id
+            this.users = this.users.filter(user => user.id !== userId);
           },
           error: () => {
             Swal.fire({
@@ -70,10 +70,10 @@ export class UsersComponent implements OnInit {
   }
 
   editar(userId: string) {
-    console.log('Editar usuario con ID:', userId); // Log de depuración
-    const usuarioEditar: User | undefined = this.users.find(user => user.id === userId); // Comparar con _id
+    console.log('Editar usuario:', userId); 
+    const usuarioEditar: User | undefined = this.users.find(user => user.id === userId);
     if (usuarioEditar) {
-      console.log('Usuario encontrado para editar:', usuarioEditar); // Log de depuración
+      console.log('Usuario encontrado para editar:', usuarioEditar); 
       Swal.fire({
         title: `Editar usuario ${usuarioEditar.name}`,
         html: `<div>
@@ -102,7 +102,7 @@ export class UsersComponent implements OnInit {
       }).then((result) => {
         if (result.isConfirmed) {
           const { name, email, role } = result.value;
-          this.userService.updateUser(userId, { name, email, role }).subscribe({ // Asegúrate de incluir role en updateUser
+          this.userService.updateUser(userId, { name, email, role }).subscribe({
             next: () => {
               Swal.fire({
                 title: '¡Usuario actualizado!',
