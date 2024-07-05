@@ -21,6 +21,7 @@ export class BookingsComponent {
   constructor(private bookingService: BookingService, private authService: AuthService){
     this.bookingService.getAllBookings().subscribe({
       next: (response)=>{
+        console.log('Bookings:', response);
         this.bookings = response as Booking[]
       },
       error: ()=>{
@@ -68,7 +69,7 @@ export class BookingsComponent {
 
   editar(bookingId: string) {
     console.log('Editar reserva:', bookingId)
-    const reservaEditar: Booking | undefined = this.bookings.find(x => x._id === bookingId);
+    const reservaEditar: Booking | undefined | null = this.bookings.find(x => x._id === bookingId);
     if (reservaEditar) {
       console.log('Editar reserva:', reservaEditar)
       Swal.fire({
