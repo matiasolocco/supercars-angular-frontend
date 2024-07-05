@@ -15,8 +15,8 @@
                     <h5 class="card-title">{{ vehicle.brand }} {{ vehicle.model }}</h5>
                     <p class="card-text">{{ vehicle.description }}</p>
                     <p class="card-text">{{ vehicle.pricePerDay | divisa }} por día</p>
-                    <button  class="btn btn-outline-secondary">Editar</button>
-                    <button  class="btn btn-outline-danger">Eliminar</button>
+                    <button (click)="editar(vehicle._id)" class="btn btn-outline-secondary">Editar</button>
+                    <button (click)="eliminar(vehicle._id)" class="btn btn-outline-danger">Eliminar</button>
                 </div>
                 <div class="card-footer">
                     <small class="text-muted">Modelo del año {{ vehicle.year }}</small>
