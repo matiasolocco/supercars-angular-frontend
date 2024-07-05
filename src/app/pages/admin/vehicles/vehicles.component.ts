@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
 })
 export class VehiclesComponent {
   vehicles: Vehicle[] = [];
-  filtro: string = "";
+  filtro: string = '';
   selectedVehicle: Vehicle | null = null;
 
   constructor(private vehicleService: VehicleService) {
@@ -113,21 +113,21 @@ export class VehiclesComponent {
 
   eliminar(vehicleId: string) {
     Swal.fire({
-      title: "¿Estás seguro?",
-      text: "No podrás revertir esta acción",
-      icon: "warning",
+      title: '¿Estás seguro?',
+      text: 'No podrás revertir esta acción',
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Sí, eliminar"
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminar'
     }).then((result) => {
       if (result.isConfirmed) {
         this.vehicleService.deleteVehicle(vehicleId).subscribe({
           next: () => {
             Swal.fire({
-              title: "¡Vehículo eliminado!",
-              text: "El vehículo ha sido eliminado correctamente",
-              icon: "success",
+              title: '¡Vehículo eliminado!',
+              text: 'El vehículo ha sido eliminado correctamente',
+              icon: 'success',
               showConfirmButton: false,
               timer: 2000
             });
@@ -135,9 +135,9 @@ export class VehiclesComponent {
           },
           error: () => {
             Swal.fire({
-              title: "Oops!",
-              text: "Ha ocurrido un error al eliminar el vehículo",
-              icon: "error",
+              title: 'Oops!',
+              text: 'Ha ocurrido un error al eliminar el vehículo',
+              icon: 'error',
               showConfirmButton: false,
               timer: 1500
             });
@@ -186,6 +186,7 @@ export class VehiclesComponent {
         const pricePerDay = parseFloat((document.getElementById('pricePerDay') as HTMLInputElement).value);
         const year = parseInt((document.getElementById('year') as HTMLInputElement).value, 10);
         const image = (document.getElementById('image') as HTMLInputElement).value;
+  
         return { brand, model, description, pricePerDay, year, image };
       }
     }).then((result) => {
@@ -195,7 +196,7 @@ export class VehiclesComponent {
           next: (vehicle) => {
             this.vehicles.push(vehicle);
             Swal.fire({
-              title: '¡Vehículo agregado!',
+              title: 'Vehículo agregado!',
               text: 'El nuevo vehículo ha sido agregado correctamente',
               icon: 'success',
               showConfirmButton: false,
@@ -216,5 +217,6 @@ export class VehiclesComponent {
       }
     });
   }
+  
 
 }
