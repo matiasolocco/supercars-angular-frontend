@@ -35,80 +35,81 @@ export class VehiclesComponent {
   }
 
   editar(vehicleId: string) {
-    console.log('ID del vehiculo a editar:', vehicleId);//TEST
+    console.log('ID del vehiculo a editar:', vehicleId);
     const vehicle = this.vehicles.find(v => v._id === vehicleId);
-    console.log('Vehiculo encontrado:', vehicle);//TEST
-    
+    console.log('Vehiculo encontrado:', vehicle);
+
     if (vehicle) {
-      Swal.fire({
-        title: `Editar vehículo ${vehicle.brand} ${vehicle.model}`,
-        html: `<div>
-          <div>
-            <label class="form-label">Marca</label>
-            <input id="brand" type="text" class="form-control" value="${vehicle.brand}">
-          </div>
-          <div>
-            <label class="form-label">Modelo</label>
-            <input id="model" type="text" class="form-control" value="${vehicle.model}">
-          </div>
-          <div>
-            <label class="form-label">Descripción</label>
-            <input id="description" type="text" class="form-control" value="${vehicle.description}">
-          </div>
-          <div>
-            <label class="form-label">Precio por día</label>
-            <input id="pricePerDay" type="number" class="form-control" value="${vehicle.pricePerDay}">
-          </div>
-          <div>
-            <label class="form-label">Año</label>
-            <input id="year" type="number" class="form-control" value="${vehicle.year}">
-          </div>
-        </div>`,
-        showCancelButton: true,
-        confirmButtonText: 'Guardar cambios',
-        cancelButtonText: 'Cancelar',
-        preConfirm: () => {
-          const brand = (document.getElementById('brand') as HTMLInputElement).value;
-          const model = (document.getElementById('model') as HTMLInputElement).value;
-          const description = (document.getElementById('description') as HTMLInputElement).value;
-          const pricePerDay = parseFloat((document.getElementById('pricePerDay') as HTMLInputElement).value);
-          const year = parseInt((document.getElementById('year') as HTMLInputElement).value, 10);
-          console.log('Datos de vehiculo actualizados:', { brand, model, description, pricePerDay, year });//TEST
-          return { brand, model, description, pricePerDay, year };
-        }
-      }).then((result) => {
-        if (result.isConfirmed) {
-          const updatedVehicle = result.value;
-          console.log('Datos confirmados para actualizar', updatedVehicle);
-          this.vehicleService.updateVehicle(vehicleId, updatedVehicle).subscribe({
-            next: () => {
-              Swal.fire({
-                title: '¡Vehículo actualizado!',
-                text: 'El vehículo ha sido actualizado correctamente',
-                icon: 'success',
-                showConfirmButton: false,
-                timer: 2000
-              });
-              Object.assign(vehicle, updatedVehicle);
-              console.log('Vehículo después de la actualización:', vehicle);//TEST
-            },
-            error: (error) => {
-              console.error('Error al actualizar:', error);//TEST
-              Swal.fire({
-                title: 'Oops!',
-                text: 'Ha ocurrido un error al actualizar el vehículo',
-                icon: 'error',
-                showConfirmButton: false,
-                timer: 1500
-              });
+        Swal.fire({
+            title: `Editar vehículo ${vehicle.brand} ${vehicle.model}`,
+            html: `<div>
+              <div>
+                <label class="form-label">Marca</label>
+                <input id="brand" type="text" class="form-control" value="${vehicle.brand}">
+              </div>
+              <div>
+                <label class="form-label">Modelo</label>
+                <input id="model" type="text" class="form-control" value="${vehicle.model}">
+              </div>
+              <div>
+                <label class="form-label">Descripción</label>
+                <input id="description" type="text" class="form-control" value="${vehicle.description}">
+              </div>
+              <div>
+                <label class="form-label">Precio por día</label>
+                <input id="pricePerDay" type="number" class="form-control" value="${vehicle.pricePerDay}">
+              </div>
+              <div>
+                <label class="form-label">Año</label>
+                <input id="year" type="number" class="form-control" value="${vehicle.year}">
+              </div>
+            </div>`,
+            showCancelButton: true,
+            confirmButtonText: 'Guardar cambios',
+            cancelButtonText: 'Cancelar',
+            preConfirm: () => {
+                const brand = (document.getElementById('brand') as HTMLInputElement).value;
+                const model = (document.getElementById('model') as HTMLInputElement).value;
+                const description = (document.getElementById('description') as HTMLInputElement).value;
+                const pricePerDay = parseFloat((document.getElementById('pricePerDay') as HTMLInputElement).value);
+                const year = parseInt((document.getElementById('year') as HTMLInputElement).value, 10);
+                console.log('Datos de vehiculo actualizados:', { brand, model, description, pricePerDay, year });
+                return { brand, model, description, pricePerDay, year };
             }
-          });
-        }
-      });
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const updatedVehicle = result.value;
+                console.log('Datos confirmados para actualizar', updatedVehicle);
+                this.vehicleService.updateVehicle(vehicleId, updatedVehicle).subscribe({
+                    next: () => {
+                        Swal.fire({
+                            title: '¡Vehículo actualizado!',
+                            text: 'El vehículo ha sido actualizado correctamente',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 2000
+                        });
+                        Object.assign(vehicle, updatedVehicle);
+                        console.log('Vehículo después de la actualización:', vehicle);
+                    },
+                    error: (error) => {
+                        console.error('Error al actualizar:', error);
+                        Swal.fire({
+                            title: 'Oops!',
+                            text: 'Ha ocurrido un error al actualizar el vehículo',
+                            icon: 'error',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    }
+                });
+            }
+        });
     } else {
-      console.error('No se encontró el vehículo a editar');
+        console.error('No se encontró el vehículo a editar');
     }
-  }
+}
+
 
   eliminar(vehicleId: string) {
     Swal.fire({
