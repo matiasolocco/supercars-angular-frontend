@@ -53,7 +53,7 @@ export class UsersComponent implements OnInit {
               timer: 2000
             });
 
-            this.users = this.users.filter(user => user.id !== userId);
+            this.users = this.users.filter(user => user._id !== userId);
           },
           error: () => {
             Swal.fire({
@@ -71,7 +71,7 @@ export class UsersComponent implements OnInit {
 
   editar(userId: string) {
     console.log('Editar usuario:', userId); 
-    const usuarioEditar: User | undefined = this.users.find(user => user.id === userId);
+    const usuarioEditar: User | undefined = this.users.find(user => user._id === userId);
     if (usuarioEditar) {
       console.log('Usuario encontrado para editar:', usuarioEditar); 
       Swal.fire({

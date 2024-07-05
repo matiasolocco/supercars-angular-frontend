@@ -35,7 +35,7 @@ export class LoginComponent {
         const loginResponse: LoginResponse = response as LoginResponse;
         const user: User = {
           token: loginResponse.token,
-          id: loginResponse.id,
+          _id: loginResponse.id,
           role: loginResponse.role,
           email: loginResponse.email ,
           name: loginResponse.name

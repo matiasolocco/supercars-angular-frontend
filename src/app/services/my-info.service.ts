@@ -13,7 +13,7 @@ export class MyInfoService {
   constructor(private http: HttpClient, private authService: AuthService) {}
 
   getUserInfo(): Observable<User> {
-    const userId = this.authService.user?.id;
+    const userId = this.authService.user?._id;
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.authService.user?.token}`,
     });
@@ -22,7 +22,7 @@ export class MyInfoService {
   }
 
   updateUserInfo(userData: any): Observable<User> {
-    const userId = this.authService.user?.id;
+    const userId = this.authService.user?._id;
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.authService.user?.token}`,
     });

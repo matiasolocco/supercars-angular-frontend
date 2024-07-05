@@ -20,14 +20,14 @@
         @for (user of users; track user) {
           <tr>
             <td>
-              <button (click)="eliminar(user.id)" class="btn btn-danger btn-sm me-1">
+              <button (click)="eliminar(user._id)" class="btn btn-danger btn-sm me-1">
                 <i class="fa fa-trash"></i>
               </button>
-              <button (click)="editar(user.id)" class="btn btn-primary btn-sm">
+              <button (click)="editar(user._id)" class="btn btn-primary btn-sm">
                 <i class="fa fa-pencil"></i>
               </button>
             </td>
-            <td>{{ user.id }}</td>
+            <td>{{ user._id }}</td>
             <td>{{ user.name }}</td>
             <td>{{ user.email }}</td>
             <td>{{ user.role }}</td>

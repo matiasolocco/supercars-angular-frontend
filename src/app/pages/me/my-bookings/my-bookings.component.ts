@@ -19,7 +19,7 @@ export class MyBookingsComponent {
   bookings: Booking[] = [];
 
   constructor(private bookingService: BookingService, private authService: AuthService){
-    this.bookingService.getBookingsByUserId(authService.user!.id).subscribe({
+    this.bookingService.getBookingsByUserId(authService.user!._id).subscribe({
       next: (response)=>{
         this.bookings = response as Booking[]
       },

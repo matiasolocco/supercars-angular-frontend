@@ -3,5 +3,5 @@ export interface User {
     email?: string
     token: string
     role: 'admin' | 'user'
-    id: string
+    _id: string
 } 
