@@ -146,4 +146,75 @@ export class VehiclesComponent {
       }
     });
   }
+
+  addNewVehicle() {
+    Swal.fire({
+      title: 'Agregar nuevo vehículo',
+      html: `<div>
+        <div>
+          <label class="form-label">Marca</label>
+          <input id="brand" type="text" class="form-control">
+        </div>
+        <div>
+          <label class="form-label">Modelo</label>
+          <input id="model" type="text" class="form-control">
+        </div>
+        <div>
+          <label class="form-label">Descripción</label>
+          <input id="description" type="text" class="form-control">
+        </div>
+        <div>
+          <label class="form-label">Precio por día</label>
+          <input id="pricePerDay" type="number" class="form-control">
+        </div>
+        <div>
+          <label class="form-label">Año</label>
+          <input id="year" type="number" class="form-control">
+        </div>
+        <div>
+          <label class="form-label">URL de la imagen</label>
+          <input id="image" type="text" class="form-control">
+        </div>
+      </div>`,
+      showCancelButton: true,
+      confirmButtonText: 'Agregar',
+      cancelButtonText: 'Cancelar',
+      preConfirm: () => {
+        const brand = (document.getElementById('brand') as HTMLInputElement).value;
+        const model = (document.getElementById('model') as HTMLInputElement).value;
+        const description = (document.getElementById('description') as HTMLInputElement).value;
+        const pricePerDay = parseFloat((document.getElementById('pricePerDay') as HTMLInputElement).value);
+        const year = parseInt((document.getElementById('year') as HTMLInputElement).value, 10);
+        const image = (document.getElementById('image') as HTMLInputElement).value;
+        return { brand, model, description, pricePerDay, year, image };
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const newVehicle = result.value;
+        this.vehicleService.addVehicle(newVehicle).subscribe({
+          next: (vehicle) => {
+            this.vehicles.push(vehicle);
+            Swal.fire({
+              title: '¡Vehículo agregado!',
+              text: 'El nuevo vehículo ha sido agregado correctamente',
+              icon: 'success',
+              showConfirmButton: false,
+              timer: 2000
+            });
+          },
+          error: (error) => {
+            console.error('Error al agregar vehículo:', error);
+            Swal.fire({
+              title: 'Oops!',
+              text: 'Ha ocurrido un error al agregar el vehículo',
+              icon: 'error',
+              showConfirmButton: false,
+              timer: 1500
+            });
+          }
+        });
+      }
+    });
+  }
+
 }
