@@ -193,8 +193,7 @@ export class VehiclesComponent {
       if (result.isConfirmed) {
         const newVehicle = result.value;
         this.vehicleService.addVehicle(newVehicle).subscribe({
-          next: (vehicle) => {
-            this.vehicles.push(vehicle);
+          next: (response:any) => {
             Swal.fire({
               title: 'Vehículo agregado!',
               text: 'El nuevo vehículo ha sido agregado correctamente',
@@ -202,6 +201,8 @@ export class VehiclesComponent {
               showConfirmButton: false,
               timer: 2000
             });
+            this.vehicles.push(response.vehicle as Vehicle);
+            console.log(this.vehicles)
           },
           error: (error) => {
             console.error('Error al agregar vehículo:', error);
