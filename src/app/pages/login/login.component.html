@@ -7,8 +7,18 @@
 
     <div class="mb-3">
         <label class="form-label" for="">Password</label>
-        <input formControlName="password" class="form-control" type="text">
-    </div>
+        <div class="input-group mb-3">
+          <input formControlName="password" [type]="passwordType" class="form-control" />
+          <button (click)="passwordType = (passwordType==='text')? 'password':'text'" class="btn btn-outline-secondary" type="button" >
+            @if (passwordType === 'text') {
+              <i class="fa fa-eye-slash"></i>
+            }
+            @else {
+              <i class="fa fa-eye"></i>
+            }
+          </button>
+        </div>
+      </div>
 
     <button class="btn btn-primary"> <i class="fa fa-key"></i> Log in</button>
 </form>

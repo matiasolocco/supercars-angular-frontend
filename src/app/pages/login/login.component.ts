@@ -13,6 +13,7 @@ import { Router, RouterModule } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  passwordType: string = 'password';
   form!: FormGroup;
 
   constructor(
@@ -37,7 +38,7 @@ export class LoginComponent {
           token: loginResponse.token,
           _id: loginResponse.id,
           role: loginResponse.role,
-          email: loginResponse.email ,
+          email: loginResponse.email,
           name: loginResponse.name
         };
 
