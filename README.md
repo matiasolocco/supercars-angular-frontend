@@ -11,7 +11,6 @@ Este proyecto es una simulación de una página web de alquiler de coches realiz
 
 ### Instalación
 
-<div align="center">
 1. Clonar repositorio Frontend
    ```sh
    git clone https://github.com/matiasolocco/supercars-angular-frontend
@@ -37,14 +36,13 @@ Este proyecto es una simulación de una página web de alquiler de coches realiz
    node index.js
    ```    
 7. Abrir el localhost predeterminado que nos brinda Angular, en nuestro navegador.  
-</div> 
+
 
 
 ## Usuarios
 
 ### Usuario general
 
-<div align="center">
 Puedes crear un nuevo usuario desde la pestaña signup, o utilizar un usuario de prueba ya generado:
 * Mail: matias@mail.com
 * Contraseña: 123456
@@ -55,12 +53,12 @@ Una vez confirmada la reserva, podrás visualizarla desde Àrea privada > Mis Re
 Desde allí también podrás editar o eliminar tus reservas. Solo podrás realizar estas acciones con reservas futuras.
 
 Desde Àrea privada > Mi información podrás ver tus datos personales.
-</div>
+
 
 
 ### Usaurio administrador
 
-<div align="center">
+
 Solo es posible registrarse como usuario, por lo que para poder acceder como administrador y visualizar todas las funciones especiales, es necesario hacer log in con el siguiente usuario:
 
 * Mail: admin@supercars.com
@@ -73,10 +71,10 @@ Reservas > Ver, modificar y eliminar cualquier reserva de la empresa, sin import
 Vehículos > Ver, eliminar y modificar cualquier dato de los vehículos. Desde el botón Añadir Vehñiculo, puedes cargar los datos de uno nuevo para que esté disponible para nuevas reservas.
 
 Usuarios > Ver, modificar datos y eliminar a cualquier usuario. Tener en cuenta que, desde aquí, también se puede cambiar el rol de un usuario para declararlo como administrador.
-</div>
+
 
 ## EN CASO DE QUE NECESITES ASISTENCIA
 
-<div align="center">
+
 Escribe un correo a matias.olocco@hotmail.com
-</div>
+
